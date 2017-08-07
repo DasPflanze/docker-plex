@@ -24,7 +24,6 @@ RUN \
  add-apt-repository ppa:stebbins/handbrake-releases && \
  apt-get update && \
  apt-get install -y \
- 	udev \
  	git \
 	handbrake-cli \
 	ffmpeg \
