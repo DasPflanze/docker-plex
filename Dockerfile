@@ -28,6 +28,7 @@ RUN \
 	handbrake-cli \
 	ffmpeg \
 	build-essential \
+	autoconf \
 	libargtable2-dev \
 	libavformat-dev \
 	libsdl1.2-dev \
