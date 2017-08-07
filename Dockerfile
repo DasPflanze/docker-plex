@@ -20,10 +20,11 @@ PLEX_MEDIA_SERVER_USER=abc
 RUN \
  apt-get update && \
  apt-get install -y \
- 	software-properties-common &&\
- add-apt-repository ppa:stebbins/handbrake-releases &&\
+ 	software-properties-common && \
+ add-apt-repository ppa:stebbins/handbrake-releases && \
  apt-get update && \
  apt-get install -y \
+ 	udev \
  	git \
 	handbrake-cli \
 	ffmpeg \
@@ -49,6 +50,7 @@ RUN \
  # get comskip
  cd /root && \
  git clone git://github.com/erikkaashoek/Comskip && \
+ cd Comskip && \
  ./autogen.sh && \
  ./configure && \
  make && \
