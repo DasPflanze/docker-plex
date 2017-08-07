@@ -29,6 +29,7 @@ RUN \
 	ffmpeg \
 	build-essential \
 	autoconf \
+	libtool \
 	libargtable2-dev \
 	libavformat-dev \
 	libsdl1.2-dev \
@@ -56,7 +57,7 @@ RUN \
  make && \
  cd /opt && \
  git clone https://github.com/ekim1337/PlexComskip.git && \
- cd Comskip && \
+ cd PlexComskip && \
 
 # change abc home folder to fix plex hanging at runtime with usermod
  usermod -d /app abc && \
