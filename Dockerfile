@@ -18,8 +18,11 @@ PLEX_MEDIA_SERVER_USER=abc
 
 # install packages
 RUN \
+ add-apt-repository ppa:stebbins/handbrake-releases \
  apt-get update && \
  apt-get install -y \
+ 	git \
+	handbrake-cli \
 	avahi-daemon \
 	dbus \
 	unrar \
@@ -30,6 +33,10 @@ RUN \
 	/tmp/plexmediaserver.deb -L \
 	"${PLEX_INSTALL}" && \
  dpkg -i /tmp/plexmediaserver.deb && \
+ 
+ # get comchap/comcut
+ mkdir /comchap && cd /comchap \
+ git clone https://github.com/BrettSheleski/comchap.git \
 
 # change abc home folder to fix plex hanging at runtime with usermod
  usermod -d /app abc && \
