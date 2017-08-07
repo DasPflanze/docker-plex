@@ -29,7 +29,7 @@ RUN \
 	ffmpeg \
 	build-essential \
 	libargtable2-dev \
-	libavformat-ffmpeg-dev \
+	libavformat-dev \
 	libsdl1.2-dev \
 	avahi-daemon \
 	dbus \
