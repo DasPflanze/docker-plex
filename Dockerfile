@@ -18,6 +18,9 @@ PLEX_MEDIA_SERVER_USER=abc
 
 # install packages
 RUN \
+ apt-get update && \
+ apt-get install -y \
+ 	software-properties-common \
  add-apt-repository ppa:stebbins/handbrake-releases \
  apt-get update && \
  apt-get install -y \
