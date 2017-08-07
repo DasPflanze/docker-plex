@@ -23,6 +23,11 @@ RUN \
  apt-get install -y \
  	git \
 	handbrake-cli \
+	ffmpeg \
+	build-essential \
+	libargtable2-dev \
+	libavformat-ffmpeg-dev \
+	libsdl1.2-dev \
 	avahi-daemon \
 	dbus \
 	unrar \
@@ -35,8 +40,18 @@ RUN \
  dpkg -i /tmp/plexmediaserver.deb && \
  
  # get comchap/comcut
- mkdir /comchap && cd /comchap \
+ cd / \
  git clone https://github.com/BrettSheleski/comchap.git \
+ 
+ # get comskip
+ cd /root \
+ git clone git://github.com/erikkaashoek/Comskip \
+ ./autogen.sh \
+ ./configure \
+ make \
+ cd /opt \
+ git clone https://github.com/ekim1337/PlexComskip.git \
+ cd Comskip
 
 # change abc home folder to fix plex hanging at runtime with usermod
  usermod -d /app abc && \
