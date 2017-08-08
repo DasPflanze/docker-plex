@@ -20,11 +20,11 @@ PLEX_MEDIA_SERVER_USER=abc
 RUN \
  apt-get update && \
  apt-get install -y \
- 	software-properties-common && \
+	software-properties-common && \
  add-apt-repository ppa:stebbins/handbrake-releases && \
  apt-get update && \
  apt-get install -y \
- 	git \
+	git \
 	handbrake-cli \
 	ffmpeg \
 	build-essential \
@@ -72,6 +72,10 @@ RUN \
 
 # add local files
 COPY root/ /
+
+# set permissions
+RUN \
+ chmod +x /opt/PlexComskip/comskip.sh
 
 # ports and volumes
 EXPOSE 32400 32400/udp 32469 32469/udp 5353/udp 1900/udp
