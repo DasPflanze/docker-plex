@@ -22,7 +22,7 @@ touch $lockFile
 #Remove commercials
 echo "Removing commercials from '$origFile'" | tee -a $dvrPostLog
 cp "$origFile" "$origFile.backup"
-/comchap/comcut --ffmpeg=/usr/bin/ffmpeg --comskip=/usr/local/bin/comskip --lockfile=/tmp/comchap.lock --comskip-ini=/opt/PlexComskip/comskip.ini "$origFile"                                                                               $
+/comchap/comcut --ffmpeg=/usr/bin/ffmpeg --comskip=/root/Comskip/comskip --lockfile=/tmp/comchap.lock --comskip-ini=/opt/PlexComskip/comskip.ini "$origFile"                                                                               $
 
 #Encode file to H.264 with mkv container using Handbrake
 echo "Re-encoding '$origFile' to '$tmpFile'" | tee -a $dvrPostLog
