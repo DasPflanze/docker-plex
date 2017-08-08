@@ -25,6 +25,7 @@ RUN \
  apt-get update && \
  apt-get install -y \
 	git \
+	csh \
 	handbrake-cli \
 	ffmpeg \
 	build-essential \
