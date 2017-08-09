@@ -23,15 +23,16 @@ touch $lockFile
 echo "Creating Backup File:'$origFile.backup'" | tee -a $dvrPostLog
 cp "$origFile" "$origFile.backup"
 echo "Removing commercials from '$origFile'" | tee -a $dvrPostLog
-nice +19 /comchap/comcut --ffmpeg=/usr/bin/ffmpeg --comskip=/root/Comskip/comskip --lockfile=/tmp/comchap.lock --comskip-ini=/opt/PlexComskip/comskip.ini "$origFile"                                                                               $
+nice +19 /comchap/comcut --ffmpeg=/usr/bin/ffmpeg --comskip=/root/Comskip/comskip --lockfile=/tmp/comchap.lock --comskip-ini=/opt/PlexComskip/comskip.ini "$origFile"
 
 #Encode file to H.264 with mkv container using Handbrake
 echo "Re-encoding '$origFile' to '$tmpFile'" | tee -a $dvrPostLog
 nice +19 HandBrakeCLI --preset-import-file $presetFile -Z "Plex Script" -i "$origFile" -o "$tmpFile"
 
 #Overwrite original mkv file with the transcoded file.
-echo "Renaming '$tmpFile' to '$origFile:r.mp4'" | tee -a $dvrPostLog
-mv -f "$origFile" "$origFile:r.mp4"
+echo "Renaming '$tmpFile' to '$origFile:r.mp4' and deleting '$origFile'" | tee -a $dvrPostLog
+mv -f "$tmpFile" "$origFile:r.mp4"
+rm "$origFile"
 
 #Remove lock file
 echo "Done processing '$origFile' removing lock" | tee -a $dvrPostLog
