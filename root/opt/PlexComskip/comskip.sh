@@ -22,6 +22,7 @@ touch $lockFile
 #Remove commercials
 echo "Creating Backup File:'$origFile.backup'" | tee -a $dvrPostLog
 cp "$origFile" "$origFile.backup"
+cp "$origFile" "$origFile.backup"
 echo "Removing commercials from '$origFile'" | tee -a $dvrPostLog
 nice +19 /comchap/comcut --ffmpeg=/usr/bin/ffmpeg --comskip=/root/Comskip/comskip --lockfile=/tmp/comchap.lock --comskip-ini=/opt/PlexComskip/comskip.ini "$origFile"
 
